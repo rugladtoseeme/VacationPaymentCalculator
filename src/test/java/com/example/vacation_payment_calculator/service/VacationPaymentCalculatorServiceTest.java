@@ -18,7 +18,6 @@ class VacationPaymentCalculatorServiceTest {
     void calculate() {
 
         Double expectedResult = 80000.;
-        LocalDate testDate = LocalDate.of(2024,4,7);
         Double actualResult = calcService.calculate(11,293000., LocalDate.of(2024,4,7));
         assertEquals(expectedResult, actualResult);
     }

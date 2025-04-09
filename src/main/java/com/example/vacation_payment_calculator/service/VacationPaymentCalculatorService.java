@@ -11,7 +11,7 @@ public class VacationPaymentCalculatorService {
 
     private static final Double averageDaysInMonth = 29.3;
 
-    private HolidayChecker holidayChecker;
+    private final HolidayChecker holidayChecker;
 
     @Autowired
     public VacationPaymentCalculatorService(HolidayChecker holidayChecker) {
