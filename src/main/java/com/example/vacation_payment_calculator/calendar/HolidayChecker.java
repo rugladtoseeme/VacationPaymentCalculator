@@ -20,13 +20,15 @@ public class HolidayChecker {
                 .GET()
                 .build();
 
-        HttpClient client = HttpClient.newBuilder().build();
-        String result = "";
-        try {
-            result = client.send(request, HttpResponse.BodyHandlers.ofString()).body();
+        String result;
+        try (HttpClient client = HttpClient.newBuilder().build()) {
 
-        } catch (IOException | InterruptedException e) {
-            //throw new RuntimeException(e);
+            try {
+                result = client.send(request, HttpResponse.BodyHandlers.ofString()).body();
+
+            } catch (IOException | InterruptedException e) {
+                throw new RuntimeException(e);
+            }
         }
 
         return "1".equals(result);  // 1 - выходной/праздник, 0 - рабочий день
