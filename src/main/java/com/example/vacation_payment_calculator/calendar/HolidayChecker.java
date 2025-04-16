@@ -21,16 +21,14 @@ public class HolidayChecker {
                 .build();
 
         String result;
-        try (HttpClient client = HttpClient.newBuilder().build()) {
+        HttpClient client = HttpClient.newBuilder().build();
 
-            try {
-                result = client.send(request, HttpResponse.BodyHandlers.ofString()).body();
-
-            } catch (IOException | InterruptedException e) {
-                throw new RuntimeException(e);
-            }
+        try {
+            result = client.send(request, HttpResponse.BodyHandlers.ofString()).body();
+        } catch (IOException | InterruptedException e) {
+            throw new RuntimeException(e);
         }
 
-        return "1".equals(result);  // 1 - выходной/праздник, 0 - рабочий день
+        return "1".equals(result);  // 1 -нерабочий день, 0 - рабочий день
     }
 }

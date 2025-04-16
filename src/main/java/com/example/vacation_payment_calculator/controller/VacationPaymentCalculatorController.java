@@ -12,8 +12,12 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/vacation-payment-calculator")
 public class VacationPaymentCalculatorController {
 
+    private final VacationPaymentCalculatorService service;
+
     @Autowired
-    private VacationPaymentCalculatorService service;
+    public VacationPaymentCalculatorController(VacationPaymentCalculatorService service) {
+        this.service = service;
+    }
 
     @GetMapping("/calculate")
     public Double calculate(@Valid @RequestBody VacationPaymentRequest request) {
